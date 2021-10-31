@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Marksheet</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h4 class="display-4 text-center text-uppercase font-weight-bolder my-5">MarkSheet</h4>
+        <div class="row my-5">
+            <!-- Left side Column User input Details -->
+            <div class="col-4">
+                <label for="">English</label>
+                <input type="text" class="form-control" id="english">
+                <label for="">Urdu</label>
+                <input type="text" class="form-control" id="urdu">
+                <label for="">Maths</label>
+                <input type="text" class="form-control" id="maths">
+                <label for="">Physics</label>
+                <input type="text" class="form-control" id="physics">
+                <label for="">Chemistry</label>
+                <input type="text" class="form-control" id="chemistry">
+                <button class="my-4 btn btn-outline-danger font-weight-bold" onclick="marksheet()">RESULT</button>
+            </div>
+            <!-- Right Side Columns Rsult display -->
+            <div class="col-8">
+                <table class="table table-bordered table-hover shadow-lg font-weight-bold text-dark table-stripped"
+                    id="tbl"></table>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        function marksheet() {
+
+
+            var eng = parseInt(document.getElementById("english").value);
+            var urd = parseInt(document.getElementById("urdu").value);
+            var math = parseInt(document.getElementById("maths").value);
+            var phy = parseInt(document.getElementById("physics").value);
+            var chem = parseInt(document.getElementById("chemistry").value);
+
+            var obt = eng + urd + math + phy + chem;
+            var per = (obt * 100) / 500;
+            var Grade="";
+            if(per >= 80 || per <= 100)
+            {
+                Grade = "Grade Is B";
+            }
+            else {
+                var ff= "Fail";
+                Grade = ff.fontcolor("red");
+            }
+            document.getElementById("tbl").innerHTML += `
+<tr>
+<th>Subject</th>    
+<th>Obtained Marks</th>
+<th>Total Marks</th>
+</tr>
+<tr>
+    
+<td>English</td>
+<td>${eng}</td>
+<td>100</td>
+</tr>
+
+<tr>
+<td>Urdu</td>
+<td>${urd}</td>
+<td>100</td>
+</tr>
+
+<tr>
+<td>Maths</td>
+<td>${math}</td>
+<td>100</td>
+</tr>
+
+<tr>
+<td>Physics</td>
+<td>${phy}</td>
+<td>100</td>
+</tr>
+
+<tr>
+<td>Chemistry</td>
+<td>${chem}</td>
+<td>100</td>
+</tr>
+
+<tr>
+<td>Total Obtained</td>
+<td>${obt}</td>
+<td>500</td>
+</tr>
+
+<tr>
+<td>Percentage</td>
+<td colspan="2">${per}%</td>
+
+</tr>
+<tr>
+<td>Grade</td>
+<td colspan="2">${Grade}</td>
+
+</tr>
+`;
+            //  console.log(obt);
+
+            //  console.log(per);
+
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
